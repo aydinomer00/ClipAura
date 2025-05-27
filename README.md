@@ -13,6 +13,12 @@ ClipAura is a modern clipboard manager that streamlines your daily workflow. Bui
 - ✅ **Persistent data storage**
 - ✅ **Advanced search & filtering**
 
+
+<img width="430" alt="image" src="https://github.com/user-attachments/assets/5c848703-4880-446f-95e4-d3509a8f2ce1" />
+
+
+
+
 ## 🚀 Installation
 
 1. Clone the repository
