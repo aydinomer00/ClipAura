@@ -16,6 +16,15 @@ ClipAura is a modern clipboard manager that streamlines your daily workflow. Bui
 
 <img width="430" alt="image" src="https://github.com/user-attachments/assets/5c848703-4880-446f-95e4-d3509a8f2ce1" />
 
+<img width="423" alt="image" src="https://github.com/user-attachments/assets/1178b388-cdc5-46b5-9dab-eef019f18a58" />
+
+<img width="426" alt="image" src="https://github.com/user-attachments/assets/1ee306b0-6530-4c81-ac1b-0c54531a0807" />
+
+<img width="428" alt="image" src="https://github.com/user-attachments/assets/50567b8e-f54b-4a45-a7ee-17531d84eb89" />
+
+<img width="429" alt="image" src="https://github.com/user-attachments/assets/a493d5dc-31e8-4a2a-b2f0-c018c3ef32b9" />
+
+
 
 
 
@@ -32,6 +41,38 @@ ClipAura is a modern clipboard manager that streamlines your daily workflow. Bui
 - **SwiftUI** - Modern UI framework
 - **AppKit** - macOS integration
 - **XCTest** - Unit testing
+
+🚀 Quick Start
+System Requirements
+
+macOS 12.0 or later
+50 MB free disk space
+Accessibility permissions
+
+Installation
+
+Download ClipAura
+bashgit clone https://github.com/aydinomer00/ClipAura.git
+cd ClipAura
+
+Build in Xcode
+bashopen ClipAura.xcodeproj
+# Press ⌘+R to build and run
+
+Grant Permissions
+
+Go to System Settings → Privacy & Security → Accessibility
+Enable ClipAura to use global hotkeys
+
+
+Start Using
+
+Copy anything (⌘+C)
+Press ⌘+Shift+V to access your clipboard history
+Click any item to copy it back
+
+
+
 
 ## 📄 License
 
