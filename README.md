@@ -1,13 +1,48 @@
 # ClipAura 📋✨
 
-**Lightweight and elegant macOS clipboard manager**
+## The Ultimate macOS Clipboard Manager for Power Users
+ClipAura transforms your copy-paste workflow into a supercharged productivity engine. This elegant, lightweight clipboard manager sits quietly in your menu bar while intelligently capturing, organizing, and securing everything you copy. Whether you're a developer juggling code snippets, a writer managing research notes, or a designer handling multiple assets, ClipAura ensures you'll never lose important copied content again.
 
-ClipAura is a modern clipboard manager that streamlines your daily workflow. Built with Swift and SwiftUI, this application runs silently in your menu bar, securely storing and organizing everything you copy.
+## 🎯 What Makes ClipAura Special?
+ClipAura isn't just another clipboard manager – it's your digital memory assistant. Built from the ground up with modern Swift and SwiftUI, this native macOS application understands the nuances of your workflow and adapts to your needs.
+The Problem: Traditional clipboards only remember your last copy. You lose valuable content the moment you copy something new.
+The Solution: ClipAura maintains a complete history of everything you copy, with intelligent categorization, powerful search, and instant access through customizable shortcuts.
 
-🎯 **What is ClipAura?**  
-ClipAura is a modern clipboard manager that revolutionizes your copy-paste workflow on macOS. Built with Swift and SwiftUI, this elegant application runs silently in your menu bar, intelligently organizing everything you copy. Never lose what you copied again! Access your entire clipboard history with a simple keyboard shortcut and boost your productivity instantly.
+## 🌟 Comprehensive Feature Set
+## 📝 Intelligent Content Management
 
+Multi-format Support: Seamlessly handles text, code snippets, URLs, email addresses, images, and more
+Smart Content Detection: Automatically recognizes and categorizes different types of content
+Rich Text Preservation: Maintains formatting, links, and styling from your original content
+Image Support: Store screenshots, copied images, and visual assets with thumbnail previews
 
+## ⚡ Lightning-Fast Access
+
+Global Hotkeys: Access your clipboard history instantly with ⌘+Shift+V from anywhere
+Quick Search: Find any item in milliseconds with intelligent fuzzy search
+Keyboard Navigation: Navigate your clipboard history without touching your mouse
+One-Click Restore: Click any item to instantly copy it back to your active clipboard
+
+## 🔒 Privacy & Security
+
+Local Storage Only: All your data stays on your Mac – nothing is sent to external servers
+Secure Encryption: Sensitive data is encrypted using industry-standard protocols
+Automatic Cleanup: Configurable history limits to manage storage and privacy
+Sensitive Content Detection: Optional filtering for passwords and sensitive information
+
+## 🎨 Modern User Experience
+
+Native SwiftUI Interface: Beautifully designed with macOS design guidelines
+Dark Mode Support: Seamlessly adapts to your system appearance preferences
+Customizable Display: Choose between grid, list, or compact view modes
+Intuitive Organization: Smart categories and tags for easy content management
+
+## 🔧 Advanced Functionality
+
+Persistent Storage: Your clipboard history survives restarts and system updates
+Configurable History: Set custom limits for how many items to remember
+Export Options: Export your clipboard history for backup or sharing
+Automation Ready: AppleScript support for power users and workflow automation
 ## 🌟 Features
 
 - ✅ **Smart clipboard management** (text, code, URLs, emails, images)
@@ -27,6 +62,15 @@ ClipAura is a modern clipboard manager that revolutionizes your copy-paste workf
 <img width="428" alt="image" src="https://github.com/user-attachments/assets/50567b8e-f54b-4a45-a7ee-17531d84eb89" />
 
 <img width="429" alt="image" src="https://github.com/user-attachments/assets/a493d5dc-31e8-4a2a-b2f0-c018c3ef32b9" />
+
+![image](https://github.com/user-attachments/assets/911d8647-9096-4bd0-92c2-7d3f0616119a)
+
+<img width="1012" alt="Ekran Resmi 2025-05-28 00 43 28" src="https://github.com/user-attachments/assets/3629aa86-7ba9-4c12-ba5f-4c19df570f03" />
+
+<img width="1012" alt="Ekran Resmi 2025-05-28 00 43 36" src="https://github.com/user-attachments/assets/92e6fcdc-2ecd-4628-828d-53468102516d" />
+
+<img width="1012" alt="Ekran Resmi 2025-05-28 00 43 44" src="https://github.com/user-attachments/assets/ae807319-6b0a-4514-b24f-202324342b5a" />
+
 
 
 ## 🚀 Quick Start
@@ -75,10 +119,13 @@ Click any item to copy it back
 
 ## 👨‍💻 Developer
 
+## 👨‍💻 About the Developer
+Ömer Murat Aydın is a passionate iOS/macOS developer with expertise in Swift, SwiftUI, and native Apple ecosystem development. With a focus on creating intuitive, powerful tools that enhance daily productivity, Ömer brings years of experience in crafting polished macOS applications.
+
 **Ömer Murat Aydın**
 - GitHub: [@aydinomer00](https://github.com/aydinomer00)
 - LinkedIn: [omermurataydin](https://linkedin.com/in/omermurataydin)
-
+- Website: https://www.omermurataydin.com/
 ---
 
 **Boost your productivity with ClipAura!** 🚀
