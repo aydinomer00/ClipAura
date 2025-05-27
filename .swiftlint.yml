@@ -1,0 +1,14 @@
+# SwiftLint Configuration for ClipAura
+included:
+  - ClipAura
+  - ClipAuraTests
+excluded:
+  - Pods
+  - Build
+  - DerivedData
+line_length: 120
+file_length: 400
+function_body_length: 50
+disabled_rules:
+  - trailing_whitespace
+  - todo
