@@ -4,6 +4,10 @@
 
 ClipAura is a modern clipboard manager that streamlines your daily workflow. Built with Swift and SwiftUI, this application runs silently in your menu bar, securely storing and organizing everything you copy.
 
+🎯 **What is ClipAura?**  
+ClipAura is a modern clipboard manager that revolutionizes your copy-paste workflow on macOS. Built with Swift and SwiftUI, this elegant application runs silently in your menu bar, intelligently organizing everything you copy. Never lose what you copied again! Access your entire clipboard history with a simple keyboard shortcut and boost your productivity instantly.
+
+
 ## 🌟 Features
 
 - ✅ **Smart clipboard management** (text, code, URLs, emails, images)
@@ -25,8 +29,33 @@ ClipAura is a modern clipboard manager that streamlines your daily workflow. Bui
 <img width="429" alt="image" src="https://github.com/user-attachments/assets/a493d5dc-31e8-4a2a-b2f0-c018c3ef32b9" />
 
 
+## 🚀 Quick Start
+
+## System Requirements
+
+macOS 12.0 or later
+50 MB free disk space
+Accessibility permissions
+
+## Installation
+
+## Download ClipAura
+git clone https://github.com/aydinomer00/ClipAura.git
+cd ClipAura
+
+## Build in Xcode
+open ClipAura.xcodeproj
+
+## Grant Permissions
+
+Go to System Settings → Privacy & Security → Accessibility
+Enable ClipAura to use global hotkeys
 
 
+## Start Using
+Copy anything (⌘+C)
+Press ⌘+Shift+V to access your clipboard history
+Click any item to copy it back
 
 ## 🚀 Installation
 
@@ -42,41 +71,7 @@ ClipAura is a modern clipboard manager that streamlines your daily workflow. Bui
 - **AppKit** - macOS integration
 - **XCTest** - Unit testing
 
-🚀 Quick Start
-System Requirements
 
-macOS 12.0 or later
-50 MB free disk space
-Accessibility permissions
-
-Installation
-
-Download ClipAura
-bashgit clone https://github.com/aydinomer00/ClipAura.git
-cd ClipAura
-
-Build in Xcode
-bashopen ClipAura.xcodeproj
-# Press ⌘+R to build and run
-
-Grant Permissions
-
-Go to System Settings → Privacy & Security → Accessibility
-Enable ClipAura to use global hotkeys
-
-
-Start Using
-
-Copy anything (⌘+C)
-Press ⌘+Shift+V to access your clipboard history
-Click any item to copy it back
-
-
-
-
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ## 👨‍💻 Developer
 
