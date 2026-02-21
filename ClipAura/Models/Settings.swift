@@ -30,34 +30,25 @@ class Settings: ObservableObject {
 
     init() {
         self.maxItems = UserDefaults.standard.object(forKey: "maxItems") as? Int ?? 100
-        self.launchAtStartup = UserDefaults.standard.bool(forKey: "launchAtStartup")
+
+        // Gerçek sistem durumunu oku (UserDefaults'tan değil)
+        self.launchAtStartup = SMAppService.mainApp.status == .enabled
 
         let hotkeyRaw = UserDefaults.standard.string(forKey: "selectedHotkey") ?? HotkeyOption.cmdShiftV.rawValue
         self.selectedHotkey = HotkeyOption(rawValue: hotkeyRaw) ?? .cmdShiftV
     }
 
     private func configureLaunchAtStartup() {
-        UserDefaults.standard.set(launchAtStartup, forKey: "launchAtStartup")
-
-        if launchAtStartup {
-            print("✅ Launch at startup enabled (requires manual setup)")
-            showLaunchInstructions()
-        } else {
-            print("❌ Launch at startup disabled")
-        }
-    }
-
-    private func showLaunchInstructions() {
-        DispatchQueue.main.async {
-            let alert = NSAlert()
-            alert.messageText = "Launch at Startup"
-            alert.informativeText = """
-            To enable launch at startup:
-            1. System Settings > General > Login Items
-            2. Click '+' and add ClipAura
-            """
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
+        do {
+            if launchAtStartup {
+                try SMAppService.mainApp.register()
+                print("✅ Launch at startup enabled")
+            } else {
+                try SMAppService.mainApp.unregister()
+                print("❌ Launch at startup disabled")
+            }
+        } catch {
+            print("⚠️ Launch at startup error: \(error.localizedDescription)")
         }
     }
 }

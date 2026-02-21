@@ -7,7 +7,6 @@
 
 import Cocoa
 import SwiftUI
-import ServiceManagement
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem?
