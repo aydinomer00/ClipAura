@@ -91,7 +91,9 @@ struct HeaderView: View {
 
             Spacer()
 
-            Button(action: {}) {
+            Button(action: {
+                NotificationCenter.default.post(name: .openSettings, object: nil)
+            }) {
                 Image(systemName: "gear")
             }
             .buttonStyle(.plain)

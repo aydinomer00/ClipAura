@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject private var settings = Settings()
+    @ObservedObject var settings: Settings
     @State private var selectedTab: SettingsTab = .general
     @State private var showingClearAlert = false
     @State private var showingResetAlert = false
@@ -900,10 +900,11 @@ struct VisualEffectView: NSViewRepresentable {
 // MARK: - Extensions
 extension Notification.Name {
     static let clearAllClipboardItems = Notification.Name("clearAllClipboardItems")
+    static let openSettings = Notification.Name("openSettings")
 }
 
 // MARK: - Preview
 #Preview {
-    SettingsView()
+    SettingsView(settings: Settings())
         .frame(width: 800, height: 600)
 }

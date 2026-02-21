@@ -19,6 +19,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupMenuBarItem()
         setupPopover()
         checkAccessibilityPermission()
+
+        // SwiftUI popover içindeki gear butonundan gelen bildirimi dinle
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(openSettings),
+            name: .openSettings,
+            object: nil
+        )
     }
 
     func setupMenuBarItem() {
@@ -100,7 +108,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func setupGlobalHotkey() {
         NSEvent.addGlobalMonitorForEvents(matching: [.keyDown]) { event in
             let currentHotkey = self.settings.selectedHotkey
-            if event.modifierFlags.contains(currentHotkey.modifierFlags) &&
+            // Sadece ilgili modifier tuşlarını kontrol et (Fn, CapsLock vb. görmezden gel)
+            let relevantFlags = event.modifierFlags.intersection([.command, .option, .control, .shift])
+            if relevantFlags == currentHotkey.modifierFlags &&
                event.keyCode == currentHotkey.keyCode {
                 DispatchQueue.main.async {
                     self.togglePopover()
@@ -160,7 +170,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 defer: false
             )
             settingsWindow?.title = "ClipAura Settings"
-            settingsWindow?.contentViewController = NSHostingController(rootView: SettingsView())
+            // AppDelegate'in kendi settings örneğini geçiriyoruz — tek kaynak!
+            settingsWindow?.contentViewController = NSHostingController(rootView: SettingsView(settings: settings))
             settingsWindow?.center()
             settingsWindow?.minSize = NSSize(width: 500, height: 400)
             settingsWindow?.maxSize = NSSize(width: 800, height: 700)
