@@ -1,131 +1,66 @@
-# ClipAura 📋✨
+# ClipAura
 
-## The Ultimate macOS Clipboard Manager for Power Users
-ClipAura transforms your copy-paste workflow into a supercharged productivity engine. This elegant, lightweight clipboard manager sits quietly in your menu bar while intelligently capturing, organizing, and securing everything you copy. Whether you're a developer juggling code snippets, a writer managing research notes, or a designer handling multiple assets, ClipAura ensures you'll never lose important copied content again.
+**Your clipboard history, one click away.** ClipAura lives in the macOS menu bar and keeps recent text, code, links, email addresses, and images ready to copy again.
 
-## 🎯 What Makes ClipAura Special?
-ClipAura isn't just another clipboard manager – it's your digital memory assistant. Built from the ground up with modern Swift and SwiftUI, this native macOS application understands the nuances of your workflow and adapts to your needs.
-The Problem: Traditional clipboards only remember your last copy. You lose valuable content the moment you copy something new.
-The Solution: ClipAura maintains a complete history of everything you copy, with intelligent categorization, powerful search, and instant access through customizable shortcuts.
+<p align="center">
+  <img src="docs/screenshots/clipboard-overview.png" width="420" alt="ClipAura menu bar popover with sample code, a link, and an image" />
+</p>
 
-## 🌟 Comprehensive Feature Set
-## 📝 Intelligent Content Management
+<p align="center"><em>Recent copies, ready from the menu bar.</em></p>
 
-Multi-format Support: Seamlessly handles text, code snippets, URLs, email addresses, images, and more
-Smart Content Detection: Automatically recognizes and categorizes different types of content
-Rich Text Preservation: Maintains formatting, links, and styling from your original content
-Image Support: Store screenshots, copied images, and visual assets with thumbnail previews
+## What it does
 
-## ⚡ Lightning-Fast Access
+- Watches the system clipboard and keeps a searchable history across app launches.
+- Groups text, code, URLs, email addresses, and images by detected content type.
+- Opens from the menu bar or a selectable global shortcut (default: `⌘⇧V`).
+- Copies a previous item back to the clipboard when you select it.
+- Lets you set a history limit, clear the history, and enable launch at login.
 
-Global Hotkeys: Access your clipboard history instantly with ⌘+Shift+V from anywhere
-Quick Search: Find any item in milliseconds with intelligent fuzzy search
-Keyboard Navigation: Navigate your clipboard history without touching your mouse
-One-Click Restore: Click any item to instantly copy it back to your active clipboard
+## Screenshots
 
-## 🔒 Privacy & Security
+### Browse by type
 
-Local Storage Only: All your data stays on your Mac – nothing is sent to external servers
-Secure Encryption: Sensitive data is encrypted using industry-standard protocols
-Automatic Cleanup: Configurable history limits to manage storage and privacy
-Sensitive Content Detection: Optional filtering for passwords and sensitive information
+Filter your history to find text or images without scrolling through everything.
 
-## 🎨 Modern User Experience
+| Text | Images |
+|:---:|:---:|
+| <img src="docs/screenshots/clipboard-text.png" width="340" alt="Text filter showing two sample notes" /> | <img src="docs/screenshots/clipboard-images.png" width="340" alt="Image filter showing a sample image preview" /> |
 
-Native SwiftUI Interface: Beautifully designed with macOS design guidelines
-Dark Mode Support: Seamlessly adapts to your system appearance preferences
-Customizable Display: Choose between grid, list, or compact view modes
-Intuitive Organization: Smart categories and tags for easy content management
+### Make it yours
 
-## 🔧 Advanced Functionality
+Set a history limit, enable launch at login, and choose a global shortcut.
 
-Persistent Storage: Your clipboard history survives restarts and system updates
-Configurable History: Set custom limits for how many items to remember
-Export Options: Export your clipboard history for backup or sharing
-Automation Ready: AppleScript support for power users and workflow automation
-## 🌟 Features
+<details>
+<summary>Explore settings screenshots</summary>
 
-- ✅ **Smart clipboard management** (text, code, URLs, emails, images)
-- ✅ **Global keyboard shortcuts** (⌘+Shift+V)
-- ✅ **Intelligent content detection**
-- ✅ **Modern SwiftUI interface**
-- ✅ **Persistent data storage**
-- ✅ **Advanced search & filtering**
+| General | Shortcuts |
+|:---:|:---:|
+| <img src="docs/screenshots/settings-general.png" width="480" alt="General settings with history limit and launch at login" /> | <img src="docs/screenshots/settings-shortcuts.png" width="480" alt="Shortcut settings with accessibility permission guidance" /> |
 
+</details>
 
-<img width="430" alt="image" src="https://github.com/user-attachments/assets/5c848703-4880-446f-95e4-d3509a8f2ce1" />
+## Get started
 
-<img width="423" alt="image" src="https://github.com/user-attachments/assets/1178b388-cdc5-46b5-9dab-eef019f18a58" />
+**Requirements:** macOS 13 or later and Xcode to build from source.
 
-<img width="426" alt="image" src="https://github.com/user-attachments/assets/1ee306b0-6530-4c81-ac1b-0c54531a0807" />
-
-<img width="428" alt="image" src="https://github.com/user-attachments/assets/50567b8e-f54b-4a45-a7ee-17531d84eb89" />
-
-<img width="429" alt="image" src="https://github.com/user-attachments/assets/a493d5dc-31e8-4a2a-b2f0-c018c3ef32b9" />
-
-![image](https://github.com/user-attachments/assets/911d8647-9096-4bd0-92c2-7d3f0616119a)
-
-<img width="1012" alt="Ekran Resmi 2025-05-28 00 43 28" src="https://github.com/user-attachments/assets/3629aa86-7ba9-4c12-ba5f-4c19df570f03" />
-
-<img width="1012" alt="Ekran Resmi 2025-05-28 00 43 36" src="https://github.com/user-attachments/assets/92e6fcdc-2ecd-4628-828d-53468102516d" />
-
-<img width="1012" alt="Ekran Resmi 2025-05-28 00 43 44" src="https://github.com/user-attachments/assets/ae807319-6b0a-4514-b24f-202324342b5a" />
-
-
-
-## 🚀 Quick Start
-
-## System Requirements
-
-macOS 12.0 or later
-50 MB free disk space
-Accessibility permissions
-
-## Installation
-
-## Download ClipAura
+```bash
 git clone https://github.com/aydinomer00/ClipAura.git
 cd ClipAura
-
-## Build in Xcode
 open ClipAura.xcodeproj
+```
 
-## Grant Permissions
+Build and run the `ClipAura` scheme in Xcode. The clipboard icon appears in the menu bar. Copy something with `⌘C`, open ClipAura, then select a history item to copy it back. Use `⌘V` to paste it into your app.
 
-Go to System Settings → Privacy & Security → Accessibility
-Enable ClipAura to use global hotkeys
+For the global shortcut, allow ClipAura in **System Settings → Privacy & Security → Accessibility**. To start it automatically after login, turn on **Launch at Startup** in ClipAura's General settings. Use a stable installed app location when relying on launch at login.
 
+## Privacy
 
-## Start Using
-Copy anything (⌘+C)
-Press ⌘+Shift+V to access your clipboard history
-Click any item to copy it back
+Clipboard history is stored locally in the app's `UserDefaults`. It is **not encrypted by ClipAura**, and sensitive text copied to the clipboard may be saved. You can delete individual entries or clear the full history from the app.
 
-## 🚀 Installation
+## Built with
 
-1. Clone the repository
-2. Open `ClipAura.xcodeproj` in Xcode
-3. Build and run (⌘+R)
-4. Grant accessibility permissions when prompted
+Swift, SwiftUI, AppKit, and XCTest.
 
-## 🛠️ Tech Stack
+## Author
 
-- **Swift 5.9+**
-- **SwiftUI** - Modern UI framework
-- **AppKit** - macOS integration
-- **XCTest** - Unit testing
-
-
-
-## 👨‍💻 Developer
-
-## 👨‍💻 About the Developer
-Ömer Murat Aydın is a passionate iOS/macOS developer with expertise in Swift, SwiftUI, and native Apple ecosystem development. With a focus on creating intuitive, powerful tools that enhance daily productivity, Ömer brings years of experience in crafting polished macOS applications.
-
-**Ömer Murat Aydın**
-- GitHub: [@aydinomer00](https://github.com/aydinomer00)
-- LinkedIn: [omermurataydin](https://linkedin.com/in/omermurataydin)
-- Website: https://www.omermurataydin.com/
----
-
-**Boost your productivity with ClipAura!** 🚀
+Ömer Murat Aydın · [GitHub](https://github.com/aydinomer00) · [LinkedIn](https://linkedin.com/in/omermurataydin) · [Website](https://www.omermurataydin.com/)

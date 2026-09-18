@@ -55,13 +55,14 @@ class ClipboardManager: ObservableObject {
         if pasteboard.changeCount != changeCount {
             changeCount = pasteboard.changeCount
 
-            if let imageData = getImageFromPasteboard(pasteboard) {
+            if let image = getImageFromPasteboard(pasteboard) {
                 let imageName = generateImageName()
                 let newItem = ClipboardItem(
                     content: imageName,
                     type: .image,
-                    imageData: imageData,
-                    imageName: imageName
+                    imageData: image.data,
+                    imageName: imageName,
+                    imagePasteboardType: image.type.rawValue
                 )
 
                 addNewItem(newItem)
@@ -85,7 +86,7 @@ class ClipboardManager: ObservableObject {
         }
     }
 
-    private func getImageFromPasteboard(_ pasteboard: NSPasteboard) -> Data? {
+    private func getImageFromPasteboard(_ pasteboard: NSPasteboard) -> (data: Data, type: NSPasteboard.PasteboardType)? {
         let imageTypes: [NSPasteboard.PasteboardType] = [
             .tiff,
             .png,
@@ -97,7 +98,7 @@ class ClipboardManager: ObservableObject {
         for type in imageTypes {
             if let data = pasteboard.data(forType: type) {
                 if NSImage(data: data) != nil {
-                    return data
+                    return (data, type)
                 }
             }
         }
@@ -153,13 +154,18 @@ class ClipboardManager: ObservableObject {
 
     func copyToClipboard(_ item: ClipboardItem) {
         let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
 
-        if item.type == .image, let imageData = item.imageData {
-            pasteboard.setData(imageData, forType: .tiff)
+        if item.type == .image {
+            guard let image = item.pasteboardImage else { return }
+
+            pasteboard.clearContents()
+            pasteboard.setData(image.data, forType: image.type)
         } else {
+            pasteboard.clearContents()
             pasteboard.setString(item.content, forType: .string)
         }
+
+        changeCount = pasteboard.changeCount
     }
 
     func deleteItem(_ item: ClipboardItem) {

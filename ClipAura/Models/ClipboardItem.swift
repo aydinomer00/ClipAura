@@ -16,14 +16,17 @@ struct ClipboardItem: Identifiable, Codable {
     let type: ClipboardType
     let imageData: Data?
     let imageName: String?
+    let imagePasteboardType: String?
 
-    init(content: String, type: ClipboardType, imageData: Data? = nil, imageName: String? = nil) {
+    init(content: String, type: ClipboardType, imageData: Data? = nil, imageName: String? = nil,
+         imagePasteboardType: String? = nil) {
         self.id = UUID()
         self.content = content
         self.timestamp = Date()
         self.type = type
         self.imageData = imageData
         self.imageName = imageName
+        self.imagePasteboardType = imagePasteboardType
     }
 
     init(from decoder: Decoder) throws {
@@ -34,10 +37,11 @@ struct ClipboardItem: Identifiable, Codable {
         type = try container.decode(ClipboardType.self, forKey: .type)
         imageData = try container.decodeIfPresent(Data.self, forKey: .imageData)
         imageName = try container.decodeIfPresent(String.self, forKey: .imageName)
+        imagePasteboardType = try container.decodeIfPresent(String.self, forKey: .imagePasteboardType)
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, content, timestamp, type, imageData, imageName
+        case id, content, timestamp, type, imageData, imageName, imagePasteboardType
     }
 
     var timeAgo: String {
@@ -60,6 +64,17 @@ struct ClipboardItem: Identifiable, Codable {
     var image: NSImage? {
         guard let imageData = imageData else { return nil }
         return NSImage(data: imageData)
+    }
+
+    var pasteboardImage: (data: Data, type: NSPasteboard.PasteboardType)? {
+        guard type == .image, let imageData = imageData else { return nil }
+        if let imagePasteboardType = imagePasteboardType {
+            return (imageData, NSPasteboard.PasteboardType(imagePasteboardType))
+        }
+
+        // History saved before format tracking needs a real TIFF representation.
+        guard let tiffData = NSImage(data: imageData)?.tiffRepresentation else { return nil }
+        return (tiffData, .tiff)
     }
 
     var imageSize: String? {

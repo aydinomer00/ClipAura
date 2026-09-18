@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import AppKit
 @testable import ClipAura
 
 class ClipboardItemTests: XCTestCase {
@@ -128,7 +129,8 @@ class ClipboardItemTests: XCTestCase {
     func testImageItemCodable() throws {
         // Given
         let imageData = Data([0x89, 0x50, 0x4E, 0x47])
-        let originalItem = ClipboardItem(content: "image.png", type: .image, imageData: imageData, imageName: "image.png")
+        let originalItem = ClipboardItem(content: "image.png", type: .image, imageData: imageData,
+                                         imageName: "image.png", imagePasteboardType: NSPasteboard.PasteboardType.png.rawValue)
 
         // When
         let encoder = JSONEncoder()
@@ -142,5 +144,45 @@ class ClipboardItemTests: XCTestCase {
         XCTAssertEqual(originalItem.type, decodedItem.type)
         XCTAssertEqual(originalItem.imageData, decodedItem.imageData)
         XCTAssertEqual(originalItem.imageName, decodedItem.imageName)
+        XCTAssertEqual(originalItem.imagePasteboardType, decodedItem.imagePasteboardType)
+    }
+
+    func testImageRestoresWithOriginalPasteboardType() throws {
+        let pngData = try makeImageData(using: .png)
+        let item = ClipboardItem(content: "image.png", type: .image, imageData: pngData,
+                                 imagePasteboardType: NSPasteboard.PasteboardType.png.rawValue)
+
+        let restored = try XCTUnwrap(item.pasteboardImage)
+        XCTAssertEqual(restored.data, pngData)
+        XCTAssertEqual(restored.type, .png)
+    }
+
+    func testLegacyImageRestoresAsValidTIFF() throws {
+        let pngData = try makeImageData(using: .png)
+        let oldItem = ClipboardItem(content: "old image", type: .image, imageData: pngData)
+        let decoded = try JSONDecoder().decode(ClipboardItem.self, from: JSONEncoder().encode(oldItem))
+
+        XCTAssertNil(decoded.imagePasteboardType)
+        let restored = try XCTUnwrap(decoded.pasteboardImage)
+        XCTAssertEqual(restored.type, .tiff)
+        XCTAssertNotEqual(restored.data, pngData)
+        XCTAssertNotNil(NSBitmapImageRep(data: restored.data))
+    }
+
+    private func makeImageData(using format: NSBitmapImageRep.FileType) throws -> Data {
+        let bitmap = try XCTUnwrap(NSBitmapImageRep(
+            bitmapDataPlanes: nil,
+            pixelsWide: 1,
+            pixelsHigh: 1,
+            bitsPerSample: 8,
+            samplesPerPixel: 4,
+            hasAlpha: true,
+            isPlanar: false,
+            colorSpaceName: .deviceRGB,
+            bytesPerRow: 0,
+            bitsPerPixel: 0
+        ))
+        bitmap.setColor(.red, atX: 0, y: 0)
+        return try XCTUnwrap(bitmap.representation(using: format, properties: [:]))
     }
 }
